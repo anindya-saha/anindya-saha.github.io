@@ -22,6 +22,16 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/anindyacs/
         target: _blank
+  sidebar:
+    style: floating
+    search: true
+    contents:
+      - section: "Deep Learning"
+        contents:
+          - posts/pytorch-autograd/index.ipynb
+      - section: "News"
+        contents:
+          - posts/welcome/index.ipynb
   page-footer:
     left: "&copy; 2026 Anindya Saha"
     right: "Built with [Quarto](https://quarto.org/)"

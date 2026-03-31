@@ -6,11 +6,22 @@ project:
 
 website:
   title: "Anindya Saha"
-  navbar:
-    right:
-      - about.qmd
-      - icon: github
+  site-url: https://anindya-saha.github.io
+  sidebar:
+    style: floating
+    search: true
+    contents:
+      - text: "Blog"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "---"
+      - text: "Categories"
+        href: index.qmd#category
+      - text: "---"
+      - text: "GitHub"
         href: https://github.com/anindya-saha
+        target: _blank
   page-footer:
     center: "Made with [Quarto](https://quarto.org/)"
 

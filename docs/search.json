@@ -4,7 +4,10 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Welcome to my blog. I write about data science, machine learning, and software engineering."
+    "text": "Welcome to my blog. I write about data science, machine learning, and software engineering.",
+    "crumbs": [
+      "About"
+    ]
   },
   {
     "objectID": "posts/pytorch-autograd/index.html",
@@ -60,7 +63,10 @@
     "href": "index.html",
     "title": "Anindya Saha",
     "section": "",
-    "text": "Welcome to My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding PyTorch Autograd\n\n\n\n\n\n\ndeep-learning\n\n\npytorch\n\n\n\nA hands-on introduction to automatic differentiation in PyTorch.\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding PyTorch Autograd\n\n\n\ndeep-learning\n\n\npytorch\n\n\n\nA hands-on introduction to automatic differentiation in PyTorch.\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Blog"
+    ]
   },
   {
     "objectID": "posts/welcome/index.html",

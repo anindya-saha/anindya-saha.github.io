@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Anindya Saha</title>
+<link>https://anindya-saha.github.io/</link>
+<atom:link href="https://anindya-saha.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.6.42</generator>
+<lastBuildDate>Tue, 31 Mar 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Welcome to My Blog</title>
+  <dc:creator>Anindya Saha</dc:creator>
+  <link>https://anindya-saha.github.io/posts/welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is my first blog post, written as a Jupyter notebook and rendered with <a href="https://quarto.org/">Quarto</a>.</p>
+<section id="code-example" class="level2">
+<h2 class="anchored" data-anchor-id="code-example">Code Example</h2>
+<p>Here’s a quick demo showing code and output in a blog post:</p>
+<div id="cell-2" class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> sys</span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Hello from Python </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>sys<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>version_info<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>major<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>sys<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>version_info<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>minor<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">!"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next</h2>
+<p>Stay tuned for more posts on data science, machine learning, and software engineering.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://anindya-saha.github.io/posts/welcome/</guid>
+  <pubDate>Tue, 31 Mar 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Understanding PyTorch Autograd</title>
+  <dc:creator>Anindya Saha</dc:creator>
+  <link>https://anindya-saha.github.io/posts/pytorch-autograd/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>PyTorch’s <code>autograd</code> engine is the backbone of neural network training. It automatically computes gradients — the derivatives you need for backpropagation — so you never have to derive them by hand.</p>
+<p>In this post, we’ll build intuition for how autograd works through short, runnable examples.</p>
+<section id="tensors-and-gradients" class="level2">
+<h2 class="anchored" data-anchor-id="tensors-and-gradients">1. Tensors and Gradients</h2>
+<p>Setting <code>requires_grad=True</code> tells PyTorch to track every operation on a tensor so it can compute gradients later.</p>
+<div id="cell-3" class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.0</span>, requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb1-4">y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># y = x² + 2x + 1</span></span>
+<span id="cb1-5"></span>
+<span id="cb1-6">y.backward()  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># dy/dx = 2x + 2</span></span>
+<span id="cb1-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"x = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>item()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, y = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>y<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>item()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, dy/dx = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>grad<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>item()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</div>
+<p>At <code>x = 3</code>, the analytical derivative is <code>2(3) + 2 = 8</code> — exactly what autograd gives us.</p>
+</section>
+<section id="the-computational-graph" class="level2">
+<h2 class="anchored" data-anchor-id="the-computational-graph">2. The Computational Graph</h2>
+<p>Autograd builds a <strong>directed acyclic graph (DAG)</strong> on the fly. Leaf tensors (the ones you create) sit at the edges, and each operation creates a node. When you call <code>.backward()</code>, PyTorch walks this graph in reverse to apply the chain rule.</p>
+<p>Let’s see the <code>grad_fn</code> attribute that links each tensor back to the operation that created it:</p>
+<div id="cell-6" class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.0</span>, requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb2-2">b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> a <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span></span>
+<span id="cb2-3">c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"a.grad_fn = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>a<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>grad_fn<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># None — leaf tensor</span></span>
+<span id="cb2-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"b.grad_fn = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>b<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>grad_fn<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MulBackward</span></span>
+<span id="cb2-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"c.grad_fn = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>c<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>grad_fn<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># AddBackward</span></span></code></pre></div>
+</div>
+</section>
+<section id="gradients-with-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="gradients-with-vectors">3. Gradients with Vectors</h2>
+<p>When the output is a vector, you need to reduce it to a scalar before calling <code>.backward()</code>. A common approach is to sum or take the mean:</p>
+<div id="cell-8" class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.0</span>], requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb3-2">y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [1, 8, 27]</span></span>
+<span id="cb3-3">y.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>().backward()   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># dy/dx = 3x²</span></span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"x     = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>tolist()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb3-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"dy/dx = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>grad<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>tolist()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [3, 12, 27]</span></span></code></pre></div>
+</div>
+</section>
+<section id="detaching-from-the-graph" class="level2">
+<h2 class="anchored" data-anchor-id="detaching-from-the-graph">4. Detaching from the Graph</h2>
+<p>Sometimes you need a tensor’s value without tracking gradients — for logging metrics, freezing part of a model, or avoiding memory leaks. Use <code>.detach()</code> or the <code>torch.no_grad()</code> context manager:</p>
+<div id="cell-10" class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5.0</span>, requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb4-2">y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># .detach() creates a view that shares data but has no grad history</span></span>
+<span id="cb4-5">y_detached <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> y.detach()</span>
+<span id="cb4-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"y_detached.requires_grad = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>y_detached<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>requires_grad<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb4-7"></span>
+<span id="cb4-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># torch.no_grad() suppresses tracking for everything inside</span></span>
+<span id="cb4-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> torch.no_grad():</span>
+<span id="cb4-10">    z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb4-11">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"z.requires_grad = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>z<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>requires_grad<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="a-mini-training-loop" class="level2">
+<h2 class="anchored" data-anchor-id="a-mini-training-loop">5. A Mini Training Loop</h2>
+<p>Let’s put it all together: use autograd to fit <code>y = 2x + 1</code> with gradient descent.</p>
+<div id="cell-12" class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">torch.manual_seed(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>)</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># True relationship: y = 2x + 1</span></span>
+<span id="cb5-4">x_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.linspace(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb5-5">y_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> x_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> torch.randn(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb5-6"></span>
+<span id="cb5-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Learnable parameters</span></span>
+<span id="cb5-8">w <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>, requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb5-9">b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.tensor(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span>, requires_grad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb5-10">lr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span></span>
+<span id="cb5-11"></span>
+<span id="cb5-12"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> epoch <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>):</span>
+<span id="cb5-13">    y_pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> w <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> x_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> b</span>
+<span id="cb5-14">    loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ((y_pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> y_data) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>).mean()</span>
+<span id="cb5-15"></span>
+<span id="cb5-16">    loss.backward()</span>
+<span id="cb5-17"></span>
+<span id="cb5-18">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">with</span> torch.no_grad():</span>
+<span id="cb5-19">        w <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-=</span> lr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> w.grad</span>
+<span id="cb5-20">        b <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-=</span> lr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> b.grad</span>
+<span id="cb5-21"></span>
+<span id="cb5-22">    w.grad.zero_()</span>
+<span id="cb5-23">    b.grad.zero_()</span>
+<span id="cb5-24"></span>
+<span id="cb5-25"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Learned: y = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>w<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>item()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.3f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">x + </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>b<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>item()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.3f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb5-26"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"True:    y = 2.000x + 1.000"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong><code>requires_grad=True</code></strong> tells PyTorch to record operations for differentiation.</li>
+<li><strong><code>.backward()</code></strong> traverses the computational graph in reverse, applying the chain rule.</li>
+<li><strong>Gradients accumulate</strong> — always call <code>.zero_()</code> before the next backward pass.</li>
+<li><strong><code>torch.no_grad()</code></strong> and <strong><code>.detach()</code></strong> let you opt out of tracking when you don’t need gradients.</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>deep-learning</category>
+  <category>pytorch</category>
+  <guid>https://anindya-saha.github.io/posts/pytorch-autograd/</guid>
+  <pubDate>Tue, 31 Mar 2026 07:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

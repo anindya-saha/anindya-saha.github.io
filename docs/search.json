@@ -88,20 +88,48 @@
     "href": "CLAUDE.html",
     "title": "CLAUDE.md",
     "section": "",
-    "text": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n\nThis is a GitHub Pages personal website repository (anindya-saha.github.io). The site is served via GitHub Pages at https://anindya-saha.github.io/.\n\n\n\nThe repository is newly initialized with no project structure yet. When a static site generator (Jekyll, Hugo, etc.) or framework is chosen and set up, this file should be updated with build commands, architecture details, and development workflow."
+    "text": "Personal blog at https://anindya-saha.github.io/, built with Quarto and Jupyter notebooks, deployed via GitHub Pages.\n\n\n\n\nQuarto (v1.6.42) — static site generator, installed at /home/asaha/quarto-1.6.42/bin/quarto\nJupyter notebooks (.ipynb) — blog post format\nuv — Python dependency management (pyproject.toml + uv.lock)\nGitHub Pages — serves from docs/ on main branch\n\n\n\n\n_quarto.yml          # Site config (theme, navbar, post-render hooks)\nindex.qmd            # Blog listing page (auto-lists posts/)\nabout.qmd            # About page\nstyles.css           # Custom CSS\npyproject.toml       # Python deps (torch, matplotlib, jupyter, etc.)\nposts/               # Blog posts — each post is posts/&lt;slug&gt;/index.ipynb\ndocs/                # Rendered output (committed, served by GitHub Pages)\n.claude/skills/      # Claude Code skills for blog workflow\n\n\n\n# Activate environment\nsource .venv/bin/activate\nexport PATH=\"/home/asaha/quarto-1.6.42/bin:$PATH\"\n\n# Install/sync dependencies\nuv sync --extra notebook\n\n# Preview locally\nquarto preview\n\n# Render full site\nquarto render\n\n# Render single post\nquarto render posts/&lt;slug&gt;/index.ipynb --execute\n\n\n\n\nCreate a new post: posts/&lt;slug&gt;/index.ipynb with YAML front matter in a raw cell\nRender: quarto render\nCommit and push: rendered output goes to docs/\n\nUse /blog-create &lt;topic&gt; and /blog-publish skills for the full workflow.\n\n\n\n\ndocs/.nojekyll must exist — the _quarto.yml post-render hook handles this\nAlways render the full site so the listing page and search index update\nPyTorch index is configured for CUDA 12.8 in pyproject.toml ([tool.uv.sources])"
   },
   {
     "objectID": "CLAUDE.html#project-overview",
     "href": "CLAUDE.html#project-overview",
     "title": "CLAUDE.md",
     "section": "",
-    "text": "This is a GitHub Pages personal website repository (anindya-saha.github.io). The site is served via GitHub Pages at https://anindya-saha.github.io/."
+    "text": "Personal blog at https://anindya-saha.github.io/, built with Quarto and Jupyter notebooks, deployed via GitHub Pages."
   },
   {
-    "objectID": "CLAUDE.html#status",
-    "href": "CLAUDE.html#status",
+    "objectID": "CLAUDE.html#tech-stack",
+    "href": "CLAUDE.html#tech-stack",
     "title": "CLAUDE.md",
     "section": "",
-    "text": "The repository is newly initialized with no project structure yet. When a static site generator (Jekyll, Hugo, etc.) or framework is chosen and set up, this file should be updated with build commands, architecture details, and development workflow."
+    "text": "Quarto (v1.6.42) — static site generator, installed at /home/asaha/quarto-1.6.42/bin/quarto\nJupyter notebooks (.ipynb) — blog post format\nuv — Python dependency management (pyproject.toml + uv.lock)\nGitHub Pages — serves from docs/ on main branch"
+  },
+  {
+    "objectID": "CLAUDE.html#project-structure",
+    "href": "CLAUDE.html#project-structure",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "_quarto.yml          # Site config (theme, navbar, post-render hooks)\nindex.qmd            # Blog listing page (auto-lists posts/)\nabout.qmd            # About page\nstyles.css           # Custom CSS\npyproject.toml       # Python deps (torch, matplotlib, jupyter, etc.)\nposts/               # Blog posts — each post is posts/&lt;slug&gt;/index.ipynb\ndocs/                # Rendered output (committed, served by GitHub Pages)\n.claude/skills/      # Claude Code skills for blog workflow"
+  },
+  {
+    "objectID": "CLAUDE.html#common-commands",
+    "href": "CLAUDE.html#common-commands",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "# Activate environment\nsource .venv/bin/activate\nexport PATH=\"/home/asaha/quarto-1.6.42/bin:$PATH\"\n\n# Install/sync dependencies\nuv sync --extra notebook\n\n# Preview locally\nquarto preview\n\n# Render full site\nquarto render\n\n# Render single post\nquarto render posts/&lt;slug&gt;/index.ipynb --execute"
+  },
+  {
+    "objectID": "CLAUDE.html#blog-workflow",
+    "href": "CLAUDE.html#blog-workflow",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Create a new post: posts/&lt;slug&gt;/index.ipynb with YAML front matter in a raw cell\nRender: quarto render\nCommit and push: rendered output goes to docs/\n\nUse /blog-create &lt;topic&gt; and /blog-publish skills for the full workflow."
+  },
+  {
+    "objectID": "CLAUDE.html#important-notes",
+    "href": "CLAUDE.html#important-notes",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "docs/.nojekyll must exist — the _quarto.yml post-render hook handles this\nAlways render the full site so the listing page and search index update\nPyTorch index is configured for CUDA 12.8 in pyproject.toml ([tool.uv.sources])"
   }
 ]

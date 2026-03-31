@@ -16,5 +16,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: litera
+      dark: darkly
     css: styles.css

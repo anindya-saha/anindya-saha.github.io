@@ -7,6 +7,62 @@
     "text": "Welcome to my blog. I write about data science, machine learning, and software engineering."
   },
   {
+    "objectID": "posts/pytorch-autograd/index.html",
+    "href": "posts/pytorch-autograd/index.html",
+    "title": "Understanding PyTorch Autograd",
+    "section": "",
+    "text": "PyTorch’s autograd engine is the backbone of neural network training. It automatically computes gradients — the derivatives you need for backpropagation — so you never have to derive them by hand.\nIn this post, we’ll build intuition for how autograd works through short, runnable examples."
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#tensors-and-gradients",
+    "href": "posts/pytorch-autograd/index.html#tensors-and-gradients",
+    "title": "Understanding PyTorch Autograd",
+    "section": "1. Tensors and Gradients",
+    "text": "1. Tensors and Gradients\nSetting requires_grad=True tells PyTorch to track every operation on a tensor so it can compute gradients later.\n\nimport torch\n\nx = torch.tensor(3.0, requires_grad=True)\ny = x ** 2 + 2 * x + 1  # y = x² + 2x + 1\n\ny.backward()  # dy/dx = 2x + 2\nprint(f\"x = {x.item()}, y = {y.item()}, dy/dx = {x.grad.item()}\")\n\nAt x = 3, the analytical derivative is 2(3) + 2 = 8 — exactly what autograd gives us."
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#the-computational-graph",
+    "href": "posts/pytorch-autograd/index.html#the-computational-graph",
+    "title": "Understanding PyTorch Autograd",
+    "section": "2. The Computational Graph",
+    "text": "2. The Computational Graph\nAutograd builds a directed acyclic graph (DAG) on the fly. Leaf tensors (the ones you create) sit at the edges, and each operation creates a node. When you call .backward(), PyTorch walks this graph in reverse to apply the chain rule.\nLet’s see the grad_fn attribute that links each tensor back to the operation that created it:\n\na = torch.tensor(2.0, requires_grad=True)\nb = a * 3\nc = b + 1\n\nprint(f\"a.grad_fn = {a.grad_fn}\")   # None — leaf tensor\nprint(f\"b.grad_fn = {b.grad_fn}\")   # MulBackward\nprint(f\"c.grad_fn = {c.grad_fn}\")   # AddBackward"
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#gradients-with-vectors",
+    "href": "posts/pytorch-autograd/index.html#gradients-with-vectors",
+    "title": "Understanding PyTorch Autograd",
+    "section": "3. Gradients with Vectors",
+    "text": "3. Gradients with Vectors\nWhen the output is a vector, you need to reduce it to a scalar before calling .backward(). A common approach is to sum or take the mean:\n\nx = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)\ny = x ** 3          # [1, 8, 27]\ny.sum().backward()   # dy/dx = 3x²\n\nprint(f\"x     = {x.tolist()}\")\nprint(f\"dy/dx = {x.grad.tolist()}\")  # [3, 12, 27]"
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#detaching-from-the-graph",
+    "href": "posts/pytorch-autograd/index.html#detaching-from-the-graph",
+    "title": "Understanding PyTorch Autograd",
+    "section": "4. Detaching from the Graph",
+    "text": "4. Detaching from the Graph\nSometimes you need a tensor’s value without tracking gradients — for logging metrics, freezing part of a model, or avoiding memory leaks. Use .detach() or the torch.no_grad() context manager:\n\nx = torch.tensor(5.0, requires_grad=True)\ny = x ** 2\n\n# .detach() creates a view that shares data but has no grad history\ny_detached = y.detach()\nprint(f\"y_detached.requires_grad = {y_detached.requires_grad}\")\n\n# torch.no_grad() suppresses tracking for everything inside\nwith torch.no_grad():\n    z = x * 2\n    print(f\"z.requires_grad = {z.requires_grad}\")"
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#a-mini-training-loop",
+    "href": "posts/pytorch-autograd/index.html#a-mini-training-loop",
+    "title": "Understanding PyTorch Autograd",
+    "section": "5. A Mini Training Loop",
+    "text": "5. A Mini Training Loop\nLet’s put it all together: use autograd to fit y = 2x + 1 with gradient descent.\n\ntorch.manual_seed(42)\n\n# True relationship: y = 2x + 1\nx_data = torch.linspace(0, 1, 50)\ny_data = 2 * x_data + 1 + 0.1 * torch.randn(50)\n\n# Learnable parameters\nw = torch.tensor(0.0, requires_grad=True)\nb = torch.tensor(0.0, requires_grad=True)\nlr = 0.1\n\nfor epoch in range(200):\n    y_pred = w * x_data + b\n    loss = ((y_pred - y_data) ** 2).mean()\n\n    loss.backward()\n\n    with torch.no_grad():\n        w -= lr * w.grad\n        b -= lr * b.grad\n\n    w.grad.zero_()\n    b.grad.zero_()\n\nprint(f\"Learned: y = {w.item():.3f}x + {b.item():.3f}\")\nprint(f\"True:    y = 2.000x + 1.000\")"
+  },
+  {
+    "objectID": "posts/pytorch-autograd/index.html#key-takeaways",
+    "href": "posts/pytorch-autograd/index.html#key-takeaways",
+    "title": "Understanding PyTorch Autograd",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nrequires_grad=True tells PyTorch to record operations for differentiation.\n.backward() traverses the computational graph in reverse, applying the chain rule.\nGradients accumulate — always call .zero_() before the next backward pass.\ntorch.no_grad() and .detach() let you opt out of tracking when you don’t need gradients."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anindya Saha",
+    "section": "",
+    "text": "Welcome to My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding PyTorch Autograd\n\n\n\n\n\n\ndeep-learning\n\n\npytorch\n\n\n\nA hands-on introduction to automatic differentiation in PyTorch.\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome to My Blog",
@@ -26,13 +82,6 @@
     "title": "Welcome to My Blog",
     "section": "What’s Next",
     "text": "What’s Next\nStay tuned for more posts on data science, machine learning, and software engineering."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Anindya Saha",
-    "section": "",
-    "text": "Welcome to My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "CLAUDE.html",

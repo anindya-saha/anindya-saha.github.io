@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Welcome to my blog. I write about data science, machine learning, and software engineering."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome to My Blog",
+    "section": "",
+    "text": "This is my first blog post, written as a Jupyter notebook and rendered with Quarto."
+  },
+  {
+    "objectID": "posts/welcome/index.html#code-example",
+    "href": "posts/welcome/index.html#code-example",
+    "title": "Welcome to My Blog",
+    "section": "Code Example",
+    "text": "Code Example\nHere’s a quick demo showing code and output in a blog post:\n\nimport sys\nprint(f\"Hello from Python {sys.version_info.major}.{sys.version_info.minor}!\")"
+  },
+  {
+    "objectID": "posts/welcome/index.html#whats-next",
+    "href": "posts/welcome/index.html#whats-next",
+    "title": "Welcome to My Blog",
+    "section": "What’s Next",
+    "text": "What’s Next\nStay tuned for more posts on data science, machine learning, and software engineering."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anindya Saha",
+    "section": "",
+    "text": "Welcome to My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 31, 2026\n\n\nAnindya Saha\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "CLAUDE.html",
+    "href": "CLAUDE.html",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n\nThis is a GitHub Pages personal website repository (anindya-saha.github.io). The site is served via GitHub Pages at https://anindya-saha.github.io/.\n\n\n\nThe repository is newly initialized with no project structure yet. When a static site generator (Jekyll, Hugo, etc.) or framework is chosen and set up, this file should be updated with build commands, architecture details, and development workflow."
+  },
+  {
+    "objectID": "CLAUDE.html#project-overview",
+    "href": "CLAUDE.html#project-overview",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This is a GitHub Pages personal website repository (anindya-saha.github.io). The site is served via GitHub Pages at https://anindya-saha.github.io/."
+  },
+  {
+    "objectID": "CLAUDE.html#status",
+    "href": "CLAUDE.html#status",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "The repository is newly initialized with no project structure yet. When a static site generator (Jekyll, Hugo, etc.) or framework is chosen and set up, this file should be updated with build commands, architecture details, and development workflow."
+  }
+]

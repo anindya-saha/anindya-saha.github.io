@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Anindya Saha"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/anindya-saha
+  page-footer:
+    center: "Made with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css

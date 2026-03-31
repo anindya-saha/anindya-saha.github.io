@@ -1,5 +1,5 @@
 ---
-title: "Anindya Saha"
+title: "Blog"
 listing:
   contents: posts
   sort: "date desc"
@@ -8,5 +8,8 @@ listing:
   categories: true
   feed: true
   fields: [title, author, date, description, categories]
-page-layout: full
+page-layout: article
+title-block-banner: false
 ---
+
+Exploring machine learning, deep learning, and the systems that power them.

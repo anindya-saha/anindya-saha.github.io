@@ -1,0 +1,116 @@
+/*-- scss:defaults --*/
+
+// Typography (same as light)
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: "Source Serif 4", "Georgia", serif;
+$headings-font-weight: 700;
+$font-size-base: 1.05rem;
+$line-height-base: 1.7;
+
+// Dark theme colors
+$body-bg: #0f172a;
+$body-color: #e2e8f0;
+$link-color: #60a5fa;
+$link-hover-color: #93bbfd;
+
+// Code
+$code-color: #f472b6;
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+// Navbar
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  .navbar-brand {
+    font-family: $headings-font-family;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 0.92rem;
+    letter-spacing: 0.01em;
+    padding: 0.5rem 1rem !important;
+  }
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  margin-top: 2rem;
+}
+
+// Blog listing cards
+.quarto-grid-item {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #1e293b;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(96, 165, 250, 0.3) !important;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-family: $headings-font-family;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: #f1f5f9;
+  }
+
+  .card-text {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .listing-categories {
+    .listing-category {
+      background: rgba(96, 165, 250, 0.12) !important;
+      color: #60a5fa !important;
+      border: none !important;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+}
+
+// Metadata
+.listing-date, .listing-author {
+  color: #64748b;
+}
+
+// Footer
+.nav-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+}
+
+// Code blocks
+div.sourceCode {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+// Post title
+.listing-title {
+  font-family: $headings-font-family;
+}

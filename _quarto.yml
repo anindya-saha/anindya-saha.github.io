@@ -7,27 +7,29 @@ project:
 website:
   title: "Anindya Saha"
   site-url: https://anindya-saha.github.io
-  sidebar:
-    style: floating
-    search: true
-    contents:
+  navbar:
+    background: light
+    foreground: dark
+    left:
       - text: "Blog"
         href: index.qmd
       - text: "About"
         href: about.qmd
-      - text: "---"
-      - text: "Categories"
-        href: index.qmd#category
-      - text: "---"
-      - text: "GitHub"
+    right:
+      - icon: github
         href: https://github.com/anindya-saha
         target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/in/anindyacs/
+        target: _blank
   page-footer:
-    center: "Made with [Quarto](https://quarto.org/)"
+    left: "&copy; 2026 Anindya Saha"
+    right: "Built with [Quarto](https://quarto.org/)"
 
 format:
   html:
     theme:
-      light: litera
-      dark: darkly
+      light: [cosmo, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     css: styles.css
+    mainfont: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"

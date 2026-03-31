@@ -4,10 +4,28 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Welcome to my blog. I write about data science, machine learning, and software engineering.",
-    "crumbs": [
-      "About"
-    ]
+    "text": "I’m a Machine Learning Platform engineer at Zoox, where I architect and build foundational ML infrastructure systems that power large-scale autonomous vehicle development.\nI’m based in the San Francisco Bay Area and have spent my career at the intersection of software engineering and machine learning — building platforms, data pipelines, and systems that help ML teams move faster."
+  },
+  {
+    "objectID": "about.html#hi-im-anindya",
+    "href": "about.html#hi-im-anindya",
+    "title": "About",
+    "section": "",
+    "text": "I’m a Machine Learning Platform engineer at Zoox, where I architect and build foundational ML infrastructure systems that power large-scale autonomous vehicle development.\nI’m based in the San Francisco Bay Area and have spent my career at the intersection of software engineering and machine learning — building platforms, data pipelines, and systems that help ML teams move faster."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "Background",
+    "text": "Background\nBefore Zoox, I worked across several technology organizations in roles spanning ML engineering, data engineering, and software development. My experience includes building distributed systems, large-scale data pipelines with Spark and Hive, and production ML workflows.\nI hold a degree from Texas A&M University (GPA 3.8/4.0), where I studied algorithms, artificial intelligence, machine learning, NLP, and data mining."
+  },
+  {
+    "objectID": "about.html#what-i-write-about",
+    "href": "about.html#what-i-write-about",
+    "title": "About",
+    "section": "What I Write About",
+    "text": "What I Write About\nThis blog is where I explore topics I find interesting:\n\nDeep Learning — internals of frameworks like PyTorch, training mechanics, and model optimization\nML Systems — infrastructure, platforms, and tooling for production machine learning\nData Engineering — distributed processing, pipelines, and storage at scale\nSoftware Engineering — design patterns, systems thinking, and building reliable software"
   },
   {
     "objectID": "posts/pytorch-autograd/index.html",
@@ -61,12 +79,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Anindya Saha",
+    "title": "Blog",
     "section": "",
-    "text": "Welcome to My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding PyTorch Autograd\n\n\n\ndeep-learning\n\n\npytorch\n\n\n\nA hands-on introduction to automatic differentiation in PyTorch.\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Blog"
-    ]
+    "text": "Exploring machine learning, deep learning, and the systems that power them.\n\n\n\n\n\n\n\n\n\n\n\nWelcome to My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding PyTorch Autograd\n\n\n\ndeep-learning\n\n\npytorch\n\n\n\nA hands-on introduction to automatic differentiation in PyTorch.\n\n\n\nAnindya Saha\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html",

@@ -33,3 +33,5 @@ format:
       dark: [darkly, theme-dark.scss]
     css: styles.css
     mainfont: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    toc: true
+    toc-depth: 3
